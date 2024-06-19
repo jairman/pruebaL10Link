@@ -14,8 +14,8 @@ class TaskController extends BaseController
 
     public function index()
     {
-
-        $tasks = Task::all();
+        $user = auth()->user()->id;
+        $tasks = Task::where('user_id', $user)->get();
      return $this->sendResponse(TasksResource::collection($tasks), 'Task retrieved successfully.' );
 
     }
@@ -35,7 +35,7 @@ class TaskController extends BaseController
     {
 
         $taskData = $request->validated();
-        $taskData['user_id'] = $request->user()->id;
+        $taskData['user_id'] = auth()->user()->id;
         $task = Task::create($taskData);
         return $this->sendResponse(new TasksResource($task), 'Task created successfully.');
     }
