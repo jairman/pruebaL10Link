@@ -68,7 +68,7 @@ class TaskController extends BaseController
 
         $tasks = $query->get();
 
-        //return response()->json($tasks);
+
        return $this->sendResponse(TasksResource::collection($tasks), 'Tareas filtradas correctamente.');
     }
 }
