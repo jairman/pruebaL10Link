@@ -30,6 +30,6 @@ Route::middleware('auth:api')->group(function () {
     Route::put('/tasks/{task}', 'App\Http\Controllers\Api\TaskController@update');
     Route::delete('/tasks/{task}', 'App\Http\Controllers\Api\TaskController@destroy');
     Route::get('/tasks/{task}/edit', 'App\Http\Controllers\Api\TaskController@edit');
-    Route::get('/tasks/filter', 'App\Http\Controllers\Api\TaskController@filter');
+
 
 });

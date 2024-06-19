@@ -33,8 +33,11 @@ class TaskController extends BaseController
 
     public function store(StoreTaskRequest $request)
     {
-       $task = Task::create($request->validated());
-         return $this->sendResponse(new TasksResource($task), 'Task created successfully.');
+
+        $taskData = $request->validated();
+        $taskData['user_id'] = $request->user()->id;
+        $task = Task::create($taskData);
+        return $this->sendResponse(new TasksResource($task), 'Task created successfully.');
     }
 
 
